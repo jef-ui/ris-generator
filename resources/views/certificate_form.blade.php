@@ -62,28 +62,48 @@
             display: block;
             text-align: center;
             margin-top: 15px;
-            color: #3498db;
+            color: white;
             text-decoration: none;
+            background-color: #3498db;
+            padding: 12px;
+            border-radius: 6px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
         }
 
         .link:hover {
-            text-decoration: underline;
+            background-color: #2980b9;
+        }
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .button-group button {
+            width: 100%;
+            flex: 1;
         }
     </style>
 </head>
 <body>
-    <div class="form-container">
-        <h2>Certificate of Appearance</h2>
-        <form action="{{ route('certificate.generate') }}" method="POST">
-            @csrf
-            <input type="text" name="name" placeholder="Full Name" required>
-            <input type="text" name="office_agency" placeholder="Office / Agency" required>
-            <input type="date" name="appearance_date" required>
-            <textarea name="purpose" placeholder="Purpose of Visit" required></textarea>
-            <input type="date" name="issued_date" required>
-            <button type="submit">Download Certificate</button>
-        </form>
-        <a class="link" href="{{ route('certificate.history') }}">View History</a>
-    </div>
+    <form action="{{ route('certificate.generate') }}" method="POST" target="_blank">
+        @csrf
+        <input type="text" name="name" placeholder="Full Name" required>
+        <input type="text" name="office_agency" placeholder="Office / Agency" required>
+        <input type="date" name="appearance_date" required>
+        <textarea name="purpose" placeholder="Purpose of Visit" required></textarea>
+        <input type="date" name="issued_date" required>
+    
+        <div class="button-group">
+            <button type="submit" name="action" value="preview">Preview Certificate</button>
+            <button type="submit" name="action" value="download">Download Certificate</button>
+        </div>
+
+        <a href="{{ route('certificate.history') }}" class="link">View History</a>
+    </form>    
 </body>
 </html>
+ 

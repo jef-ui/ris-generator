@@ -26,14 +26,21 @@ class CertificateController extends Controller
     }
 
     public function generate(Request $request)
-    {
-        $data = $request->only(['name', 'office_agency', 'appearance_date', 'purpose', 'issued_date']);
+{
+    $data = $request->only(['name', 'office_agency', 'appearance_date', 'purpose', 'issued_date']);
 
-        Certificate::create($data);
+    // Optional: Save to database here if needed
+    // Certificate::create($data);
 
-        $pdf = Pdf::loadView('certificate_template', $data);
-        return $pdf->download('Certificate_' . $data['name'] . '.pdf');
+    $pdf = Pdf::loadView('certificate_template', $data);
+
+    if ($request->input('action') === 'preview') {
+        return $pdf->stream('Certificate_' . $data['name'] . '.pdf');
     }
+
+    return $pdf->download('Certificate_' . $data['name'] . '.pdf');
+}
+
 
     public function history()
     {
