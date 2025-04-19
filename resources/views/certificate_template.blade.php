@@ -4,11 +4,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        @page {
-            margin-top: 10px;
-        }
-    </style>
-    
+    @page {
+        margin-top: 10px;
+    }
+</style>
+
 </head>
 <body>
     <div style="padding: 40px; font-family: Arial, sans-serif;">
