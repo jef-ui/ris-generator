@@ -30,7 +30,7 @@ class CertificateController extends Controller
     $data = $request->only(['name', 'office_agency', 'appearance_date', 'purpose', 'issued_date']);
 
     // Optional: Save to database here if needed
-    // Certificate::create($data);
+    Certificate::create($data);
 
     $pdf = Pdf::loadView('certificate_template', $data);
 
