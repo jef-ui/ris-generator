@@ -26,7 +26,7 @@
             This is to certify that <strong>{{ $name }}</strong> of 
             <strong>{{ $office_agency }}</strong> appeared in Office of Civil Defense 
             MIMAROPA Regional Office on <strong>{{ \Carbon\Carbon::parse($appearance_date)->format('F d, Y') }}</strong> 
-            to the <strong>{{ $purpose }}</strong>.
+            to <strong>{{ $purpose }}</strong>.
         </p>
         <p>
             This certification is issued to the above-mentioned personnel for whatever legal purpose it may serve.
